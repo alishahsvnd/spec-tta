@@ -25,6 +25,7 @@ from predictor import Predictor
 from utils.misc import set_seeds, set_devices
 from tta.tafas import build_adapter
 import tta.petsa as petsa
+import tta.spec_tta as spec_tta
 from config import get_norm_module_cfg
 
 
@@ -73,6 +74,17 @@ def main():
         elif 'PETSA' in cfg.RESULT_DIR:
             print("PETSA")
             adapter = petsa.build_adapter(cfg, model, norm_module=norm_module)
+            adapter.adapt()
+            adapter.count_parameters()
+        elif 'SPEC_TTA_HC' in cfg.RESULT_DIR:
+            print("SPEC_TTA_HC")
+            from tta.spec_tta.hc_adapter_wrapper import SpecTTAHighCapacityAdapter
+            adapter = SpecTTAHighCapacityAdapter(cfg, model, norm_module=norm_module)
+            adapter.adapt()
+            adapter.count_parameters()
+        elif 'SPEC_TTA' in cfg.RESULT_DIR:
+            print("SPEC_TTA")
+            adapter = spec_tta.build_adapter(cfg, model, norm_module=norm_module)
             adapter.adapt()
             adapter.count_parameters()
             

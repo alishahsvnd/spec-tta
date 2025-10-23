@@ -120,6 +120,43 @@ _C.TTA.PETSA.GCM_VAR_WISE = True
 _C.TTA.PETSA.RANK = 16
 _C.TTA.PETSA.LOSS_ALPHA = 0.1
 
+## Spectral TTA
+_C.TTA.SPEC_TTA = CN()
+_C.TTA.SPEC_TTA.K_BINS = 32  # Number of selected frequency bins (optimal: 32)
+_C.TTA.SPEC_TTA.PATCH_LEN = 24  # Patch length for structural loss
+_C.TTA.SPEC_TTA.HUBER_DELTA = 0.5  # Huber loss delta
+_C.TTA.SPEC_TTA.BETA_FREQ = 0.1  # Frequency loss weight (optimal: 0.1, not 0.05)
+_C.TTA.SPEC_TTA.LAMBDA_PW = 1.0  # Patchwise structural loss weight
+_C.TTA.SPEC_TTA.LAMBDA_PROX = 1e-4  # Proximal regularization weight
+_C.TTA.SPEC_TTA.LAMBDA_HC = 0.1  # Horizon consistency loss weight
+_C.TTA.SPEC_TTA.DRIFT_THRESHOLD = 0.005  # Drift detection threshold (optimal: 0.005, not 0.01)
+_C.TTA.SPEC_TTA.LR = 1e-3  # Learning rate
+_C.TTA.SPEC_TTA.GRAD_CLIP = 1.0  # Gradient clipping
+_C.TTA.SPEC_TTA.RESELECTION_EVERY = 0  # 0=fixed bins; >0=reselect every N updates
+_C.TTA.SPEC_TTA.USE_ADAPTIVE_SCHEDULE = False  # Use horizon-adaptive loss weights (Improvement E)
+_C.TTA.SPEC_TTA.USE_OUTPUT_ONLY = False  # Freeze input adapter for long horizons H>=240 (Improvement D)
+_C.TTA.SPEC_TTA.USE_SAFE_UPDATES = False  # Enable safe update manager with rollback (Improvement F)
+
+## Spectral TTA High-Capacity (for publication)
+_C.TTA.SPEC_TTA_HC = CN()
+_C.TTA.SPEC_TTA_HC.MODE = 'ultra'  # 'medium', 'high', 'ultra'
+_C.TTA.SPEC_TTA_HC.K_LOW = 10  # Low-frequency bins
+_C.TTA.SPEC_TTA_HC.K_MID = 20  # Mid-frequency bins
+_C.TTA.SPEC_TTA_HC.K_HIGH = 19  # High-frequency bins
+_C.TTA.SPEC_TTA_HC.RANK = 24  # Low-rank dimension
+_C.TTA.SPEC_TTA_HC.GATING_DIM = 128  # Gating network hidden dim
+_C.TTA.SPEC_TTA_HC.INIT_SCALE = 0.01  # Initialization scale
+_C.TTA.SPEC_TTA_HC.PATCH_LEN = 24  # Patch length for structural loss
+_C.TTA.SPEC_TTA_HC.HUBER_DELTA = 0.3  # Huber loss delta
+_C.TTA.SPEC_TTA_HC.BETA_FREQ = 0.3  # Frequency loss weight
+_C.TTA.SPEC_TTA_HC.LAMBDA_PW = 2.5  # Patchwise structural loss weight
+_C.TTA.SPEC_TTA_HC.LAMBDA_PROX = 5e-5  # Proximal regularization weight
+_C.TTA.SPEC_TTA_HC.LAMBDA_HC = 0.25  # Horizon consistency loss weight
+_C.TTA.SPEC_TTA_HC.DRIFT_THRESHOLD = 0.002  # Drift detection threshold
+_C.TTA.SPEC_TTA_HC.LR = 2e-3  # Learning rate
+_C.TTA.SPEC_TTA_HC.GRAD_CLIP = 2.0  # Gradient clipping
+_C.TTA.SPEC_TTA_HC.RESELECTION_EVERY = 20  # Reselect bins every N updates
+
 
 _C.MODEL = CN()
 _C.MODEL.NAME = 'iTransformer'

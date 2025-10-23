@@ -172,3 +172,22 @@ cython_debug/
 
 # PyPI configuration file
 .pypirc
+
+# Documentation files
+*.md
+
+# Large data files
+data/electricity/electricity.csv
+data/traffic/traffic.csv
+
+# Model checkpoints (large files)
+checkpoints/
+*.pth
+*.ckpt
+
+# Log files and results
+*.log
+results/
+training_logs_*/
+MULTI_BACKBONE_*/
+SPEC_TTA_*/
