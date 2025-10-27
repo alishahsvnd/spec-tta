@@ -176,6 +176,7 @@ cython_debug/
 # Documentation files
 *.md
 
+*.tex
 # Large data files
 data/electricity/electricity.csv
 data/traffic/traffic.csv
@@ -191,3 +192,4 @@ results/
 training_logs_*/
 MULTI_BACKBONE_*/
 SPEC_TTA_*/
+data/

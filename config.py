@@ -123,6 +123,7 @@ _C.TTA.PETSA.LOSS_ALPHA = 0.1
 ## Spectral TTA
 _C.TTA.SPEC_TTA = CN()
 _C.TTA.SPEC_TTA.K_BINS = 32  # Number of selected frequency bins (optimal: 32)
+_C.TTA.SPEC_TTA.USE_HORIZON_ADAPTIVE_BINS = False  # Scale k_bins by horizon (EXPERIMENTAL: changes H=192,336,720)
 _C.TTA.SPEC_TTA.PATCH_LEN = 24  # Patch length for structural loss
 _C.TTA.SPEC_TTA.HUBER_DELTA = 0.5  # Huber loss delta
 _C.TTA.SPEC_TTA.BETA_FREQ = 0.1  # Frequency loss weight (optimal: 0.1, not 0.05)
@@ -136,6 +137,7 @@ _C.TTA.SPEC_TTA.RESELECTION_EVERY = 0  # 0=fixed bins; >0=reselect every N updat
 _C.TTA.SPEC_TTA.USE_ADAPTIVE_SCHEDULE = False  # Use horizon-adaptive loss weights (Improvement E)
 _C.TTA.SPEC_TTA.USE_OUTPUT_ONLY = False  # Freeze input adapter for long horizons H>=240 (Improvement D)
 _C.TTA.SPEC_TTA.USE_SAFE_UPDATES = False  # Enable safe update manager with rollback (Improvement F)
+_C.TTA.SPEC_TTA.ENABLE_H720_ADAPTATION = False  # Allow adaptation at H>=720 (EXPERIMENTAL: removes forced baseline)
 
 ## Spectral TTA High-Capacity (for publication)
 _C.TTA.SPEC_TTA_HC = CN()
