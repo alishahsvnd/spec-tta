@@ -9,14 +9,6 @@
 
 **SPEC-TTA** (Spectral Test-Time Adaptation) is a novel parameter-efficient framework for adapting pre-trained time-series forecasting models to distribution shifts at test time. By directly parameterizing adaptations in the frequency domain via complex-valued gains on selected Fourier bins, SPEC-TTA achieves state-of-the-art performance with minimal computational overhead.
 
-### Key Features
-
-- 🎯 **76.2% Win Rate** across 105 configurations (7 datasets × 3 horizons × 5 models)
-- 📉 **30.8% MSE Reduction** compared to frozen baselines
-- ⚡ **20× Parameter Efficiency** (only 910 trainable parameters for K=32, V=7)
-- 🚀 **2× Faster Adaptation** than time-domain methods via drift-triggered updates
-- 🔍 **Interpretable Frequency Adjustments** with physical meaning
-
 ![Overview](./overview.png)
 
 The figure above illustrates the SPEC-TTA architecture with input/output spectral adapters and trend correction head.
@@ -363,14 +355,7 @@ This implementation builds upon:
 
 We thank the open-source community for their valuable contributions.
 
-## Contact
-
-For questions, issues, or collaboration opportunities, please:
-- Open an issue on GitHub
-- Contact: [Your contact information]
-
 ---
 
 **Paper**: Submitted to The Web Conference (WWW) 2026  
 **Code**: MIT License  
-**Status**: Research prototype - contributions welcome!
