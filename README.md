@@ -1,4 +1,4 @@
-# SPEC-TTA: Spectral Test-Time Adaptation for Time-Series Forecasting
+# SPEC-TTA:  Parameter-Efficient Spectral Test-Time Adaptation for Time-Series Forecasting
 
 [![Paper](https://img.shields.io/badge/WWW-2026-blue)](.)
 [![Python](https://img.shields.io/badge/Python-3.8+-green)]()
